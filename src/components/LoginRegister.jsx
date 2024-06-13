@@ -2,10 +2,50 @@ import React, { useState } from "react";
 
 const LoginRegister = () => {
 	const [issignIn, setIsSignIn] = useState(false);
+	const [nameValid, setNameValid] = useState();
+	const [emailValid, setEmailValid] = useState();
+	const [passwordValid, setPasswordValid] = useState();
+	const [nameError, setNameError] = useState(false);
+	const [emailError, setEmailError] = useState(false);
+	const [passwordError, setPasswordError] = useState(false);
 
 	const signInhandle = () => {
 		setIsSignIn(!issignIn);
 	};
+
+	const handleSubmitBtn = (e) => {
+		e.preventDefault();
+	};
+
+	const handleName = (e) => {
+		let name = e.target.value;
+		if (name.length < 5) {
+			setNameError(true);
+		} else {
+			setNameError(false);
+		}
+	};
+
+	const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+	const handleEmail = (e) => {
+		let email = e.target.value;
+		if (!email.match(emailRegex)) {
+			setEmailError(true);
+		} else {
+			setEmailError(false);
+		}
+	};
+
+	const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+	const handlePassword = (e) => {
+		let password = e.target.value;
+		if (!password.match(passwordRegex)) {
+			setPasswordError(true);
+		} else {
+			setPasswordError(false);
+		}
+	};
+
 	return (
 		<div className="min-h-screen">
 			<div className="absolute min-h-screen">
@@ -18,29 +58,55 @@ const LoginRegister = () => {
 			<div className="opacity-80 pt-28 flex justify-center items-center">
 				<form
 					action=""
-					className="w-3/4 max-w-96 flex flex-col justify-center p-10 bg-slate-950 text-white rounded-md">
+					className="w-3/4 max-w-md flex flex-col justify-center p-10 bg-slate-950 text-white rounded-md">
 					<h1 className="py-4 text-4xl font-bold">
 						{issignIn ? "Sign Up" : "Sign In"}
 					</h1>
 					{issignIn && (
-						<input
-							className="my-4 border p-2 rounded-md bg-slate-700"
-							type="text"
-							placeholder="Full name"
-						/>
+						<>
+							<input
+								onChange={handleName}
+								className="mt-4 border p-2 rounded-md bg-slate-700"
+								type="text"
+								placeholder="Full name" required 
+							/>
+							{nameError ? (
+								<span className="text-red-600">
+									name legnth must be greater than 5 character
+								</span>
+							) : (
+								""
+							)}
+						</>
 					)}
 					<input
-						className="my-4 border p-2 rounded-md bg-slate-700"
+						onChange={handleEmail}
+						className="mb-4 mt-8 border p-2 rounded-md bg-slate-700"
 						type="text"
-						placeholder="Email or mobile number"
+						placeholder="Email or mobile number" required
 						inputMode="email"
+						value={emailValid}
 					/>
+					{emailError ? (
+						<span className="text-red-600">Invalid Email</span>
+					) : (
+						""
+					)}
 					<input
+						onChange={handlePassword}
 						className="my-4 border p-2 rounded-md bg-slate-700"
 						type="password"
-						placeholder="Enter your Password"
+						placeholder="Enter your Password" required
+						value={passwordValid}
 					/>
-					<button className="my-4 border p-2 rounded-md bg-red-600 text-white font-bold text-md">
+					{passwordError ? (
+						<span className="text-red-600">incorrect Password</span>
+					) : (
+						""
+					)}
+					<button
+						className="my-4 border p-2 rounded-md bg-red-600 text-white font-bold text-md"
+						onClick={handleSubmitBtn}>
 						{issignIn ? "Sign Up" : "Sign In"}
 					</button>
 					<p className="text-right hover:underline cursor-pointer">
