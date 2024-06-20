@@ -1,0 +1,18 @@
+.header {
+    width: 100%;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    background-color: #000000d9;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.header img{
+    width: 90px;
+}
+.signInBtn{
+    padding: 0 10px;
+    background-color: red;
+    border-radius: 5px;
+}

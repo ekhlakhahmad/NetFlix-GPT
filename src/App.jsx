@@ -1,17 +1,21 @@
-import React from 'react'
-import Header from './components/Header'
-import LoginRegister from './components/LoginRegister'
-import Home from './pages/Home/Home'
+import React from "react";
+import Home from "./pages/Home/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RegisterLogin from "./pages/RegisterLogin/RegisterLogin";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
-  return (
-    <div>
-      {/* <Header/> */}
-      {/* <LoginRegister/> */}
+	return (
+		<div>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/login" element={<RegisterLogin />} />
+				</Routes>
+				<Footer/>
+			</BrowserRouter>
+		</div>
+	);
+};
 
-      <Home/>
-    </div>
-  )
-}
-
-export default App
+export default App;

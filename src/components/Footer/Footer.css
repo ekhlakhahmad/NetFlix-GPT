@@ -1,0 +1,20 @@
+.footer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 20px 5%;
+    gap: 10%;
+
+}
+.footer-icons{
+    display: flex;
+    gap: 10px;
+}
+.footer-menu-links{
+    display: flex;
+    justify-content: space-between;
+}
+.footer li:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
