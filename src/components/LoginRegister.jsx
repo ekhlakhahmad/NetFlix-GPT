@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const LoginRegister = () => {
 	const [issignIn, setIsSignIn] = useState(false);
@@ -46,11 +46,13 @@ const LoginRegister = () => {
 		}
 	};
 
+	const handleSubmit = () => {};
+
 	return (
 		<div className="min-h-screen">
 			<div className="absolute min-h-screen">
 				<img
-					className="h-full object-cover w-screen"
+					className="h-screen object-cover w-screen"
 					src="https://assets.nflxext.com/ffe/siteui/vlv3/cacfadb7-c017-4318-85e4-7f46da1cae88/e43aa8b1-ea06-46a5-abe3-df13243e718d/IN-en-20240603-popsignuptwoweeks-perspective_alpha_website_small.jpg"
 					alt="background image"
 				/>
@@ -58,6 +60,7 @@ const LoginRegister = () => {
 			<div className="opacity-80 pt-28 flex justify-center items-center">
 				<form
 					action=""
+					onSubmit={handleSubmit}
 					className="w-3/4 max-w-md flex flex-col justify-center p-10 bg-slate-950 text-white rounded-md">
 					<h1 className="py-4 text-4xl font-bold">
 						{issignIn ? "Sign Up" : "Sign In"}
@@ -68,7 +71,8 @@ const LoginRegister = () => {
 								onChange={handleName}
 								className="mt-4 border p-2 rounded-md bg-slate-700"
 								type="text"
-								placeholder="Full name" required 
+								placeholder="Full name"
+								required
 							/>
 							{nameError ? (
 								<span className="text-red-600">
@@ -83,7 +87,8 @@ const LoginRegister = () => {
 						onChange={handleEmail}
 						className="mb-4 mt-8 border p-2 rounded-md bg-slate-700"
 						type="text"
-						placeholder="Email or mobile number" required
+						placeholder="Email or mobile number"
+						required
 						inputMode="email"
 						value={emailValid}
 					/>
@@ -96,7 +101,8 @@ const LoginRegister = () => {
 						onChange={handlePassword}
 						className="my-4 border p-2 rounded-md bg-slate-700"
 						type="password"
-						placeholder="Enter your Password" required
+						placeholder="Enter your Password"
+						required
 						value={passwordValid}
 					/>
 					{passwordError ? (
@@ -112,9 +118,18 @@ const LoginRegister = () => {
 					<p className="text-right hover:underline cursor-pointer">
 						Forgot password?
 					</p>
-					<div className="text-md">
-						<input className="text-2xl my-4" type="checkbox" id="checkBox" />
-						<label htmlFor="checkbox">Remember me</label>
+					<div className="flex items-center mb-4">
+						<input
+							id="default-checkbox"
+							type="checkbox"
+							value=""
+							className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600"
+						/>
+						<label
+							htmlFor="default-checkbox"
+							className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+							Remember Password
+						</label>
 					</div>
 					<div className="flex gap-1 justify-center ">
 						New to NetFlix?{" "}
