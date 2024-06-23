@@ -6,7 +6,7 @@ const Header = () => {
 	return (
 		<div className="header">
 			<img src={netflixLogo} alt="netFlix Logo" />
-			<button className="signInBtn">Sign In</button>
+			{/* <button className="signInBtn">Sign In</button> */}
 		</div>
 	);
 };

@@ -3,8 +3,8 @@ import './Player.css';
 
 const Player = () => {
   return (
-    <div>
-      This is Player Page
+    <div >
+      
     </div>
   )
 }
