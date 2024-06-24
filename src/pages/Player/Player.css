@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
 }
 .player img{
     position: absolute;
@@ -15,10 +14,4 @@
 .player iframe{
     border-radius: 10px;
     height: 90vh;
-}
-.player-info{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
 }
